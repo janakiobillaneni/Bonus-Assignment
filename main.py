@@ -9,7 +9,7 @@ firebase_admin.initialize_app(cred, {
 
 db = firestore.client()
 def Call_Minions(request):
-  minion_request = request.args
+  minionrequest = request.args
 
 ref_minions = db.collection("Minion_Table")
 minions = ref_minions.get()
@@ -18,12 +18,12 @@ list_of_minions = []
 for doc in minions:
   list_of_minions.append(doc.to_dict())
 
-minions_required = {}
+minionsreq = {}
 for m in list_of_minions:
-  if m["ID"] == int(minion_request["ID"]):
-  minions_required = m
+  if m["ID"] == int(minionrequest["ID"]):
+  minionsreq = m
 break
-if not minions_required:
+if not minionsreq:
   return "Given Minion ID not available "
 
-return minions_required
+return minionsreq
