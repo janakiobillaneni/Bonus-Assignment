@@ -14,12 +14,12 @@ def Call_Minions(request):
 ref_minions = db.collection("Minion_Table")
 minions = ref_minions.get()
 
-list_of_minions = []
+lstminions = []
 for doc in minions:
-  list_of_minions.append(doc.to_dict())
+  lstminions.append(doc.to_dict())
 
 minionsreq = {}
-for m in list_of_minions:
+for m in lstminions:
   if m["ID"] == int(minionrequest["ID"]):
   minionsreq = m
 break
